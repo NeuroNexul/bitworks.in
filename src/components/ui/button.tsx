@@ -1,8 +1,9 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
+import { ArrowRightIcon, ChevronRightIcon } from "lucide-react";
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
@@ -32,26 +33,81 @@ const buttonVariants = cva(
       size: "default",
     },
   }
-)
+);
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  asChild?: boolean
+  asChild?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
+    const Comp = asChild ? Slot : "button";
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         {...props}
       />
-    )
+    );
   }
-)
-Button.displayName = "Button"
+);
+Button.displayName = "Button";
 
-export { Button, buttonVariants }
+const AnimatedButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, asChild = false, children, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button";
+    return (
+      <Comp
+        className={cn(
+          "group/animate-button flex flex-row items-center justify-center gap-2",
+          buttonVariants({ variant, size, className }),
+          "[&_svg]:pointer-events-none [&_svg]:size-auto [&_svg]:shrink-0"
+        )}
+        ref={ref}
+        {...props}
+      >
+        {children}
+        <div className={cn("flex flex-row items-center justify-center gap-0")}>
+          <div className="w-3 overflow-visible flex items-center justify-center">
+            <ArrowRightIcon
+              stroke="currentColor"
+              className={cn(
+                "!size-4",
+                "transition-all duration-300 ease-in-out",
+                "transform translate-x-0 opacity-100",
+                "group-hover/animate-button:translate-x-[100%] group-hover/animate-button:opacity-0"
+              )}
+              style={{
+                transitionDelay: "0ms",
+              }}
+            />
+          </div>
+          {Array.from({ length: 3 }).map((_, i) => (
+            <div
+              key={i}
+              className="w-2 overflow-visible flex items-center justify-center"
+            >
+              <ChevronRightIcon
+                stroke="currentColor"
+                className={cn(
+                  "!size-4",
+                  "transition-all duration-300 ease-in-out",
+                  "transform translate-x-[-100%] opacity-0",
+                  "group-hover/animate-button:translate-x-0 group-hover/animate-button:opacity-100"
+                )}
+                style={{
+                  transitionDelay: `${i * 100}ms`,
+                }}
+              />
+            </div>
+          ))}
+        </div>
+      </Comp>
+    );
+  }
+);
+AnimatedButton.displayName = "AnimatedButton";
+
+export { Button, buttonVariants, AnimatedButton };
