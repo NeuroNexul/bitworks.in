@@ -3,6 +3,9 @@ import { AnimatedButton, Button } from "@/components/ui/button";
 import { Spotlight } from "@/components/ui/spotlight";
 import AnimateText from "@/components/utility/animate-text";
 import { cn } from "@/lib/utils";
+import FeatureDomain from "./feature-domain";
+import Footer from "@/components/extras/footer";
+import FeatureCollaboration from "./feature-collaboration";
 
 export default function Home() {
   return (
@@ -198,43 +201,89 @@ export default function Home() {
         <section id="features" className="pt-5 md:pt-5">
           <div className={cn("w-full max-w-5xl mx-auto px-5 md:px-10 py-5")}>
             <h2 className="text-4xl font-semibold text-center">
-              <AnimateText text="Empowering Our Team" animateOnView />
+              {/* <AnimateText text="Empowering Our Team" animateOnView /> */}
+              Empowering Our Team
             </h2>
             <p className="text-lg font-medium text-center text-muted-foreground pt-4">
-              <AnimateText
+              {/* <AnimateText
                 text="Discover the tools and features designed to fuel collaboration and drive creativity."
                 animateOnView
                 delay={50}
-              />
+              /> */}
+              Discover the tools and features designed to fuel collaboration and
+              drive creativity.
             </p>
           </div>
 
-          {/* <div
-            className={cn(
-              "flex flex-row items-center justify-between gap-8",
-              "w-full max-w-5xl mx-auto px-5 md:px-10"
-            )}
-          >
+          <div className={cn("w-full max-w-6xl mx-auto mt-5")}>
             <div
               className={cn(
-                "w-full md:w-1/2",
-                "flex flex-col items-start justify-center",
-                "border border-muted-foreground rounded-lg p-8 shadow-lg"
+                "w-full h-0.5 bg-muted-foreground/50",
+                "bg-gradient-to-r from-background via-primary-foreground/20 to-background"
               )}
-            ></div>
-          </div> */}
+            />
+
+            <div
+              className={cn(
+                "flex flex-col md:flex-row items-stretch justify-start"
+              )}
+            >
+              <FeatureCollaboration />
+
+              <div
+                className={cn(
+                  "w-full md:w-0.5 h-0.5 md:h-auto bg-muted-foreground/50 md:bg-muted-foreground/30",
+                  "max-md:bg-gradient-to-r from-background via-primary-foreground/20 to-background"
+                )}
+              />
+
+              <div className={cn("w-full md:w-2/3", "p-5 md:p-10")}>
+                <h3 className="text-2xl font-semibold">Private and Secure</h3>
+                <p className="text-lg font-medium text-muted-foreground pt-2">
+                  Build with confidence knowing everything stays within the
+                  team.
+                </p>
+              </div>
+            </div>
+
+            <div
+              className={cn(
+                "w-full h-0.5 bg-muted-foreground/50",
+                "bg-gradient-to-r from-background via-primary-foreground/20 to-background"
+              )}
+            />
+
+            <div
+              className={cn(
+                "flex flex-col md:flex-row items-stretch justify-start"
+              )}
+            >
+              <FeatureDomain />
+
+              <div className={cn("w-0.5 bg-muted-foreground/30")} />
+
+              <div className={cn("w-full md:w-1/3", "p-5 md:p-10")}>
+                <h3 className="text-2xl font-semibold">
+                  Fun and Productive Environment
+                </h3>
+                <p className="text-lg font-medium text-muted-foreground pt-2">
+                  Bitworks blends serious innovation with fun, making
+                  collaboration a joy.
+                </p>
+              </div>
+            </div>
+
+            <div
+              className={cn(
+                "w-full h-0.5 bg-muted-foreground/50",
+                "bg-gradient-to-r from-background via-primary-foreground/20 to-background"
+              )}
+            />
+          </div>
         </section>
 
         {/* Footer */}
-        <footer className="pt-5 md:pt-20 pb-20 invisible">
-          <div className={cn("w-full max-w-5xl mx-auto px-5 md:px-10")}>
-            <h2 className="text-4xl font-semibold text-center">Footer</h2>
-            <p className="text-lg font-medium text-center text-muted-foreground">
-              A private hub for us to create, collaborate, and innovate
-              together.
-            </p>
-          </div>
-        </footer>
+        <Footer />
       </main>
     </PageWrapper>
   );

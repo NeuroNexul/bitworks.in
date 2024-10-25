@@ -59,9 +59,10 @@ export default function Navbar({}: Props) {
       <div
         className={cn(
           "flex-shrink relative w-[calc(100%-52px-0.5rem)] max-w-fit",
-          "border-2 rounded-full backdrop-blur-lg overflow-hidden",
+          "border-2 rounded-full backdrop-blur-lg bg-background/70 overflow-hidden",
           "transition-all duration-300",
-          "pointer-events-auto"
+          "pointer-events-auto",
+          "shadow-xl shadow-background drop-shadow-xl"
         )}
       >
         <ScrollArea orientation="horizontal" className="w-full" width={5}>
@@ -88,9 +89,10 @@ export default function Navbar({}: Props) {
         className={cn(
           "flex-shrink-0 relative w-auto max-w-7xl",
           "px-1 py-1 overflow-hidden",
-          "after:absolute after:inset-0 after:backdrop-blur-lg after:-z-10",
+          "after:absolute after:inset-0 after:backdrop-blur-lg bg-background/70 after:-z-10",
           "border-2 rounded-full",
-          "transition-all duration-300"
+          "transition-all duration-300",
+          "shadow-xl shadow-background drop-shadow-xl"
         )}
       >
         <div className={cn("relative z-10 flex flex-row gap-0 items-center justify-evenly")}>
