@@ -3,7 +3,7 @@
 import { GlobeConfig, Position } from "@/components/ui/globe";
 import { cn } from "@/lib/utils";
 import dynamic from "next/dynamic";
-import React from "react";
+import React, { Suspense } from "react";
 
 const World = dynamic(
   () => import("@/components/ui/globe").then((m) => m.World),
@@ -402,8 +402,23 @@ export default function FeatureCollaboration({}: Props) {
     },
   ];
 
+  const [showGlobe, setShowGlobe] = React.useState(false);
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowGlobe(true);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className={cn("relative z-0 w-full md:w-1/3", "p-5 md:p-10 overflow-hidden")}>
+    <div
+      className={cn(
+        "relative z-0 w-full md:w-1/3",
+        "p-5 md:p-10 overflow-hidden"
+      )}
+    >
       <h3 className="text-2xl font-semibold">Collaborative Workspace</h3>
       <p className="text-lg font-medium text-muted-foreground pt-2">
         A shared space to brainstorm, code, and innovate seamlessly.
@@ -415,7 +430,11 @@ export default function FeatureCollaboration({}: Props) {
             "absolute -z-10 -top-12 left-1/2 -translate-x-1/2 w-[150%] aspect-square"
           )}
         >
-          <World data={sampleArcs} globeConfig={globeConfig} />
+          {showGlobe && (
+            <Suspense fallback={<p>Loading...</p>}>
+              <World data={sampleArcs} globeConfig={globeConfig} />
+            </Suspense>
+          )}
         </div>
       </div>
     </div>
