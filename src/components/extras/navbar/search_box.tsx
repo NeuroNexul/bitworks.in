@@ -40,35 +40,54 @@ export default function SearchBox({}: Props) {
   }, [isOpen]);
 
   return (
-    <div className="relative">
-      <Tooltip delayDuration={0}>
-        <TooltipTrigger asChild>
-          <button
-            className={cn(
-              "h-full group/navButton",
-              "p-1 rounded-full",
-              "hover:bg-muted transition-colors duration-300",
-              isOpen ? "bg-muted" : "bg-transparent",
-              "pointer-events-auto"
-            )}
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <div
-              className={cn(
-                "h-full",
-                "flex flex-row items-center justify-center"
-              )}
-            >
-              <div className={cn("h-8 w-8 grid place-items-center")}>
-                <SearchIcon size={20} stroke="currentColor" fill="none" />
-              </div>
-            </div>
-          </button>
-        </TooltipTrigger>
-        <TooltipContent>
-          <span>Search</span>
-        </TooltipContent>
-      </Tooltip>
+    <>
+      <div
+        className={cn(
+          "flex-shrink-0 relative w-auto max-w-7xl",
+          "px-1 py-1 overflow-hidden",
+          "after:absolute after:inset-0 after:backdrop-blur-lg bg-background/70 after:-z-10",
+          "border-2 rounded-full",
+          "transition-all duration-300",
+          "shadow-xl shadow-background drop-shadow-xl"
+        )}
+      >
+        <div
+          className={cn(
+            "relative z-10 flex flex-row gap-0 items-center justify-evenly"
+          )}
+        >
+          <div className="relative">
+            <Tooltip delayDuration={0}>
+              <TooltipTrigger asChild>
+                <button
+                  className={cn(
+                    "h-full group/navButton",
+                    "p-1 rounded-full",
+                    "hover:bg-muted transition-colors duration-300",
+                    isOpen ? "bg-muted" : "bg-transparent",
+                    "pointer-events-auto"
+                  )}
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  <div
+                    className={cn(
+                      "h-full",
+                      "flex flex-row items-center justify-center"
+                    )}
+                  >
+                    <div className={cn("h-8 w-8 grid place-items-center")}>
+                      <SearchIcon size={20} stroke="currentColor" fill="none" />
+                    </div>
+                  </div>
+                </button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <span>Search</span>
+              </TooltipContent>
+            </Tooltip>
+          </div>
+        </div>
+      </div>
 
       <div className={cn("fixed bottom-16 left-0 right-0 w-full px-4")}>
         <div
@@ -124,6 +143,6 @@ export default function SearchBox({}: Props) {
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 }

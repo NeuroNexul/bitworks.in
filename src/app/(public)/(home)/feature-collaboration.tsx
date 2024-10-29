@@ -9,7 +9,7 @@ const World = dynamic(
   () => import("@/components/ui/globe").then((m) => m.World),
   {
     ssr: false,
-    loading: () => <p>Loading...</p>,
+    // loading: () => <p>Loading...</p>,
   }
 );
 
@@ -25,7 +25,7 @@ export default function FeatureCollaboration({}: Props) {
     emissive: "#0f172a",
     emissiveIntensity: 1,
     shininess: 0,
-    polygonColor: "rgba(255,255,255,0.7)",
+    polygonColor: "rgba(255,255,255,1)",
     ambientLight: "#0f172a",
     directionalLeftLight: "#ffffff",
     directionalTopLight: "#ffffff",
@@ -415,8 +415,8 @@ export default function FeatureCollaboration({}: Props) {
   return (
     <div
       className={cn(
-        "relative z-0 w-full md:w-1/3",
-        "p-5 md:p-10 overflow-hidden"
+        "relative z-0 w-full md:w-[40%]",
+        "p-5 md:p-10 pt-16 md-pt-10 overflow-hidden"
       )}
     >
       <h3 className="text-2xl font-semibold">Collaborative Workspace</h3>
@@ -424,15 +424,37 @@ export default function FeatureCollaboration({}: Props) {
         A shared space to brainstorm, code, and innovate seamlessly.
       </p>
 
-      <div className="relative -z-10 w-full h-36">
+      <div
+        className={cn(
+          "relative -z-10 w-full h-48",
+          "after:pointer-events-none after:absolute after:inset-0 after:-m-10 after:-mb-5 after:md:-mb-10 after:z-10 after:bg-[linear-gradient(to_bottom,transparent_80%,_hsl(var(--background))_100%)]"
+        )}
+      >
         <div
           className={cn(
             "absolute -z-10 -top-12 left-1/2 -translate-x-1/2 w-[150%] aspect-square"
           )}
         >
           {showGlobe && (
-            <Suspense fallback={<p>Loading...</p>}>
+            <Suspense
+              fallback={
+                <div
+                  className={cn(
+                    "w-[66.66%] aspect-square",
+                    "absolute top-12 left-1/2 -translate-x-1/2",
+                    "bg-[url(https://res.cloudinary.com/djoo8ogmp/image/upload/v1730234354/uploaded/image_y4nfw1.png)]",
+                    "bg-cover bg-center bg-no-repeat"
+                  )}
+                ></div>
+              }
+            >
               <World data={sampleArcs} globeConfig={globeConfig} />
+              {/* <div className={cn(
+                "w-[66.66%] aspect-square",
+                "absolute top-12 left-1/2 -translate-x-1/2",
+                "bg-[url(https://res.cloudinary.com/djoo8ogmp/image/upload/v1730234354/uploaded/image_y4nfw1.png)]",
+                "bg-cover bg-center bg-no-repeat"
+              )}></div> */}
             </Suspense>
           )}
         </div>

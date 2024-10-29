@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 import FeatureDomain from "./feature-domain";
 import Footer from "@/components/extras/footer";
 import FeatureCollaboration from "./feature-collaboration";
+import FeatureDevelopment from "./feature-development";
+import FeaturePrivacy from "./feature-privacy";
 
 export default function Home() {
   return (
@@ -232,18 +234,12 @@ export default function Home() {
 
               <div
                 className={cn(
-                  "w-full md:w-0.5 h-0.5 md:h-auto bg-muted-foreground/50 md:bg-muted-foreground/30",
+                  "w-0.5 h-auto bg-muted-foreground/30",
                   "max-md:bg-gradient-to-r from-background via-primary-foreground/20 to-background"
                 )}
               />
 
-              <div className={cn("w-full md:w-2/3", "p-5 md:p-10")}>
-                <h3 className="text-2xl font-semibold">Private and Secure</h3>
-                <p className="text-lg font-medium text-muted-foreground pt-2">
-                  Build with confidence knowing everything stays within the
-                  team.
-                </p>
-              </div>
+              <FeaturePrivacy />
             </div>
 
             <div
@@ -262,15 +258,7 @@ export default function Home() {
 
               <div className={cn("w-0.5 bg-muted-foreground/30")} />
 
-              <div className={cn("w-full md:w-1/3", "p-5 md:p-10")}>
-                <h3 className="text-2xl font-semibold">
-                  Fun and Productive Environment
-                </h3>
-                <p className="text-lg font-medium text-muted-foreground pt-2">
-                  Bitworks blends serious innovation with fun, making
-                  collaboration a joy.
-                </p>
-              </div>
+              <FeatureDevelopment />
             </div>
 
             <div

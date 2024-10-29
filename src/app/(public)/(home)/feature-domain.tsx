@@ -28,12 +28,19 @@ export default function FeatureDomain({}: Props) {
   const item = items[Math.floor(Math.random() * items.length)];
 
   return (
-    <div className={cn("relative w-full md:w-2/3", "p-5 md:p-10 overflow-hidden")}>
+    <div className={cn("relative w-full md:w-[60%]", "p-5 md:p-10 pt-16 md-pt-10 overflow-hidden")}>
       <h3 className="text-2xl font-semibold">
         Get yourself and your projects an identity
       </h3>
       <p className="text-lg font-medium text-muted-foreground pt-2">
-        Stand out with a personalized subdomain that reflects your individuality
+        Stand out with a personalized&nbsp;
+        <span className={cn(
+          "-my-1 px-2 py-1",
+          "bg-primary-foreground text-primary-background rounded-lg border border-muted-foreground/50",
+        )}>
+          *.bitworks.in
+        </span>
+        &nbsp;that reflects your individuality
         and gives your projects a unique presence.
       </p>
 
