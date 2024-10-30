@@ -13,11 +13,6 @@ const World = dynamic(
   }
 );
 
-// @ts-ignore
-// const c = dynamic(() => import("ccapture.js/build/CCapture.all.min.js"), {
-//   ssr: false,
-// });
-
 export default function Home() {
   const globeConfig: GlobeConfig = {
     pointSize: 4,
