@@ -13,6 +13,8 @@ const World = dynamic(
   }
 );
 
+export const runtime = "edge";
+
 export default function Home() {
   const globeConfig: GlobeConfig = {
     pointSize: 4,

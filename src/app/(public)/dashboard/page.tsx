@@ -2,6 +2,8 @@ import PageWrapper from "@/components/extras/page_wrapper";
 import { Button } from "@/components/ui/button";
 import { signOut } from "@/auth/auth.config";
 
+export const runtime = "edge";
+
 export default function Home() {
   return (
     <PageWrapper>

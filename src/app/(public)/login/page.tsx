@@ -4,6 +4,8 @@ import { cn } from "@/lib/utils";
 import React from "react";
 import Form from "./form";
 
+export const runtime = "edge";
+
 type Props = {
   searchParams: Promise<{
     callbackUrl?: string;

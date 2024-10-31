@@ -9,6 +9,8 @@ import FeatureCollaboration from "./feature-collaboration";
 import FeatureDevelopment from "./feature-development";
 import FeaturePrivacy from "./feature-privacy";
 
+export const runtime = "edge";
+
 export default function Home() {
   return (
     <PageWrapper>
