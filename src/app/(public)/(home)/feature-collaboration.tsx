@@ -5,13 +5,10 @@ import { cn } from "@/lib/utils";
 import dynamic from "next/dynamic";
 import React, { Suspense } from "react";
 
-const World = dynamic(
-  () => import("@/components/ui/globe").then((m) => m.World),
-  {
-    ssr: false,
-    // loading: () => <p>Loading...</p>,
-  }
-);
+const World = dynamic(() => import("@/components/ui/globe"), {
+  ssr: false,
+  // loading: () => <p>Loading...</p>,
+});
 
 type Props = {};
 

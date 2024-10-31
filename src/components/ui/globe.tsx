@@ -115,12 +115,41 @@ export function Globe({ globeConfig, data }: WorldProps) {
     globeMaterial.shininess = globeConfig.shininess || 0.9;
   };
 
+  function validateData(data: Position[]): boolean {
+    for (const point of data) {
+      if (
+        isNaN(point.startLat) ||
+        isNaN(point.startLng) ||
+        isNaN(point.endLat) ||
+        isNaN(point.endLng)
+      ) {
+        console.error("Invalid data point:", point);
+        return false; // Early exit if invalid data is found
+      }
+    }
+    return true; // All data points are valid
+  }
+
   const _buildData = () => {
+    if (!validateData(data)) return;
+    
     const arcs = data;
     const points = [];
     for (let i = 0; i < arcs.length; i++) {
       const arc = arcs[i];
       const rgb = hexToRgb(arc.color) as { r: number; g: number; b: number };
+
+      // Ensure all coordinates are valid numbers
+      if (
+        isNaN(arc.startLat) ||
+        isNaN(arc.startLng) ||
+        isNaN(arc.endLat) ||
+        isNaN(arc.endLng)
+      ) {
+        console.error("Invalid coordinates for data point:", arc);
+        continue; // Skip this invalid point
+      }
+
       points.push({
         size: defaultProps.pointSize,
         order: arc.order,
@@ -168,6 +197,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
 
   const startAnimation = () => {
     if (!globeRef.current || !globeData) return;
+    if (!validateData(data)) return;
 
     globeRef.current
       .arcsData(data)
@@ -244,12 +274,16 @@ export function WebGLRendererConfig() {
   return null;
 }
 
-export function World(props: WorldProps) {
+export default function World(props: WorldProps) {
   const { globeConfig } = props;
   const scene = new Scene();
   scene.fog = new Fog(0xffffff, 400, 2000);
   return (
-    <Canvas scene={scene} camera={new PerspectiveCamera(50, aspect, 180, 1800)} frameloop="always">
+    <Canvas
+      scene={scene}
+      camera={new PerspectiveCamera(50, aspect, 180, 1800)}
+      frameloop="always"
+    >
       <WebGLRendererConfig />
       <ambientLight color={globeConfig.ambientLight} intensity={0.6} />
       <directionalLight

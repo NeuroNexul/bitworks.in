@@ -246,7 +246,7 @@ export default function Home() {
 
             <div
               className={cn(
-                "w-full h-0.5 bg-muted-foreground/50",
+                "hidden md:block w-full h-0.5 bg-muted-foreground/50",
                 "bg-gradient-to-r from-background via-primary-foreground/20 to-background"
               )}
             />
