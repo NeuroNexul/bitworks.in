@@ -24,6 +24,23 @@ export const metadata: Metadata = {
   title: "BitWorks",
   description:
     "At BitWorks, we focus on collaborative coding, knowledge sharing, and pushing the boundaries of technology.",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://bitworks.dev",
+    siteName: "BitWorks",
+    title: "BitWorks",
+    description:
+      "At BitWorks, we focus on collaborative coding, knowledge sharing, and pushing the boundaries of technology.",
+    images: [
+      {
+        url: "https://res.cloudinary.com/djoo8ogmp/image/upload/v1729950647/uploaded/download_dspezl.png",
+        width: 1200,
+        height: 749,
+        alt: "BitWorks",
+      },
+    ],
+  },
 };
 
 export default async function RootLayout({

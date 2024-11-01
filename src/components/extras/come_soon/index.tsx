@@ -34,14 +34,14 @@ export default function CommingSoon({}: Props) {
 
     const TAIL_LENGTH = 40;
     let cursorCircles: Array<HTMLDivElement> = [];
-    let cursorHistory = Array(TAIL_LENGTH).fill({ x: 0, y: 0 });
+    const cursorHistory = Array(TAIL_LENGTH).fill({ x: 0, y: 0 });
     let animationFrame: number;
 
     function initCursor() {
       if (!cursor.current) return;
 
       for (let i = 0; i < TAIL_LENGTH; i++) {
-        let div = document.createElement("div");
+        const div = document.createElement("div");
         div.classList.add("cursor-circle");
         cursor.current.append(div);
       }
@@ -53,11 +53,11 @@ export default function CommingSoon({}: Props) {
       cursorHistory.push({ x: mouse.current.x, y: mouse.current.y });
 
       for (let i = 0; i < TAIL_LENGTH; i++) {
-        let current = cursorHistory[i];
-        let next = cursorHistory[i + 1] || cursorHistory[TAIL_LENGTH - 1];
+        const current = cursorHistory[i];
+        const next = cursorHistory[i + 1] || cursorHistory[TAIL_LENGTH - 1];
 
-        let xDiff = next.x - current.x;
-        let yDiff = next.y - current.y;
+        const xDiff = next.x - current.x;
+        const yDiff = next.y - current.y;
 
         current.x += xDiff * 0.35;
         current.y += yDiff * 0.35;
