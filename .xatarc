@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Bitworks-s-workspace-vfdbgb.us-east-1.xata.sh/db/prod",
+  "codegen": {
+    "output": "src/db/xata.ts"
+  }
+}

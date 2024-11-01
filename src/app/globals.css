@@ -119,3 +119,14 @@
   @apply bg-muted/80 text-primary;
   /* filter: url("#fancy-goo"); */
 }
+
+.cursor-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: hsl(var(--foreground));
+  transform-origin: center center;
+}

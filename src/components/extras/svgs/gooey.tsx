@@ -6,7 +6,7 @@ export default function Gooey({}: Props) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" className="size-0 hidden">
       <defs>
-        <filter id="fancy-goo">
+        <filter id="goo">
           <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
           <feColorMatrix
             in="blur"
